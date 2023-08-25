@@ -1,0 +1,73 @@
+1)test veritabanınızda employee isimli sütun bilgileri id(INTEGER), name VARCHAR(50), birthday DATE, email VARCHAR(100) olan bir tablo oluşturalım.
+
+CREATE TABLE employee (
+  id INTEGER,
+  name VARCHAR(50) NOT NULL,
+  birthday DATE,
+  email VARCHAR(100)
+);
+
+2)Oluşturduğumuz employee tablosuna 'Mockaroo' servisini kullanarak 50 adet veri ekleyelim.
+
+insert into employee (name, birthday, email) values ('Daisi', '2002-07-21', 'dgraysonm@imageshack.us');
+insert into employee (name, birthday, email) values ('Ethyl', '2005-11-27', 'eskeechn@huffingtonpost.com');
+ 
+3)Sütunların her birine göre diğer sütunları güncelleyecek 5 adet UPDATE işlemi yapalım.
+-- İsim (name) sütununu güncellemek:
+
+UPDATE employee
+SET name = 'John Doe'
+WHERE name = 'Cullan'
+RETURNING *;
+
+
+-- Country sütununu güncellemek:
+
+UPDATE employee
+SET birthday = '1990-06-15'
+WHERE email = 'yserckd@home.pl';
+
+
+-- E-posta (email) sütununu güncellemek:
+
+UPDATE employee
+SET email = 'johndoe@example.com'
+WHERE birthday = '1950/04/10';
+
+
+-- İsim ve doğum günü sütunlarını güncellemek:
+
+UPDATE employee
+SET name = 'Jane Smith',
+    birthday = '1985-03-20'
+WHERE id = 4;
+
+
+-- Tüm sütunları güncellemek:
+
+UPDATE employee
+SET name = 'Robert Johnson',
+    birthday = '1978-12-10',
+    email = 'robertjohnson@example.com'
+WHERE id = 5;
+
+
+4)Sütunların her birine göre ilgili satırı silecek 5 adet DELETE işlemi yapalım.
+DELETE FROM employee
+WHERE id = 10;
+
+
+DELETE FROM employee
+WHERE birthday = '2108-07-21';
+
+
+DELETE FROM employee
+WHERE email ='remziye@xmail.com';
+
+
+DELETE FROM employee
+WHERE name = 'Mehmet';
+
+
+DELETE FROM employee
+WHERE email ='melike@xmail.com';
